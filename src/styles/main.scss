@@ -1,0 +1,9 @@
+$body-color: #fafafa;
+$primary-color: #3498db;
+
+body {
+  background: $body-color;
+  h1 {
+    color: $primary-color;
+  }
+}
