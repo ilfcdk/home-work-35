@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
+//const ESLintPlugin = require('eslint-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -71,12 +71,18 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'styles.[contenthash].css',
     }),
-    new ESLintPlugin({
+    /*new ESLintPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],
-    }),
+    }),*/
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'public', to: '' }, // копіює public/* у dist/
+          {
+            from: 'public',
+            to: '',
+            globOptions: {
+              ignore: ['**/index.html'], // Не копіювати index.html
+            },
+        },
       ],
     }),
     new BundleAnalyzerPlugin({
